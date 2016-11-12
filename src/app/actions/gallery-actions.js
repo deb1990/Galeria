@@ -31,5 +31,18 @@ export function updateFilter(value) {
     }
 }
 
-export default {fetchStart, fetchError, dataFetched, toggleFilterDialog, updateFilter};
+export function showImageDetails(value) {
+    return {
+        type: "SHOW_IMG_DETAILS",
+        payload: value
+    }
+}
+
+export function hideImageDetails() {
+    return {
+        type: "HIDE_IMG_DETAILS"
+    }
+}
+
+export default {fetchStart, fetchError, dataFetched, toggleFilterDialog, updateFilter, showImageDetails, hideImageDetails};
 

@@ -5,15 +5,16 @@ class ImageList extends React.Component {
     constructor(){
         super();
     }
-
+    
     getList() {
-        var images = this.props.data.map((item)=>{
+        var images = this.props.data.map((item, index)=>{
             if(!item.is_album) {
                 return <GridTile
                     key={item.id}
                     title={item.title}
                     subtitle={<span>{item.topic}</span>}>
-                    <img src={item.link}/>
+                    <img src={item.link}
+                         onClick={()=>{this.props.showImageDetails(index)}}/>
                 </GridTile>;
             }
         });
@@ -25,11 +26,12 @@ class ImageList extends React.Component {
     }
 
     render() {
+        var list = this.getList();
         return <GridList
             cols={3}
             cellHeight={500}
             padding={1}
-            >{this.getList()}
+            >{list}
         </GridList>;
     }
 }

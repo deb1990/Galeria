@@ -1,12 +1,10 @@
 import {combineReducers} from "redux";
-import user from "./userReducer";
-import todoData from "./todoReducer";
+import galleryData from "./gallery-reducer";
 import { routerReducer } from 'react-router-redux'
 import {createStore} from "redux";
 
 const allReducers = combineReducers({
-    user,
-    todoData,
+    galleryData,
     routing: routerReducer
 });
 

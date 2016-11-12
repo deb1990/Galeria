@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import axios from "axios";
 
-import galleryActions from "./../actions/galleryActions";
+import galleryActions from "../actions/gallery-actions";
 
 import AppBar from 'material-ui/AppBar';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -12,6 +12,7 @@ import Filter from 'material-ui/svg-icons/content/filter-list';
 
 import ImageList from "./image-list";
 import FilterImages from "./filter-images";
+import ImageDetails from "./image-details";
 
 const styles = {
     root: {
@@ -37,6 +38,7 @@ class Gallery extends React.Component {
             this.props.galleryData.filter.window + "/" +
             "?showViral=" + this.props.galleryData.filter.viral;
     }
+    
     getData() {
         this.props.dispatch(galleryActions.fetchStart());
         axios({
@@ -68,6 +70,14 @@ class Gallery extends React.Component {
         this.props.dispatch(galleryActions.updateFilter(value));
     }
 
+    showImageDetails(index) {
+        this.props.dispatch(galleryActions.showImageDetails(index));
+    }
+    
+    hideImageDetails() {
+        this.props.dispatch(galleryActions.hideImageDetails());
+    }
+
     render() {
         return <div style={styles.root}>
             {this.showLoader()}
@@ -87,7 +97,16 @@ class Gallery extends React.Component {
             />
             
 
-            <ImageList data = {this.props.galleryData.list}/>
+            <ImageList
+                data = {this.props.galleryData.list}
+                showImageDetails = {this.showImageDetails.bind(this)}
+            />
+            <ImageDetails 
+                data={this.props.galleryData.list}
+                hideImageDetails = {this.hideImageDetails.bind(this)}
+                image={this.props.galleryData.imageDetails}>
+                
+            </ImageDetails>
         </div>
     }
 }

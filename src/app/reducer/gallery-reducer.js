@@ -1,5 +1,9 @@
 export default function(state = {
     list: [],
+    imageDetails: {
+        index: null,
+        open: false
+    },
     fetching: false,
     fetched: false,
     error: false,
@@ -46,6 +50,26 @@ export default function(state = {
                 ...state
             };
             returnVal.filter[action.payload.type] = action.payload.value;
+            return returnVal;
+        }
+        case "SHOW_IMG_DETAILS": {
+            let returnVal = {
+                ...state
+            };
+            returnVal.imageDetails = {
+                index: action.payload,
+                open: true
+            };
+            return returnVal;
+        }
+        case "HIDE_IMG_DETAILS": {
+            let returnVal = {
+                ...state
+            };
+            returnVal.imageDetails = {
+                index: null,
+                open: false
+            };
             return returnVal;
         }
     }
