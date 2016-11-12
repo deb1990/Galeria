@@ -17,6 +17,10 @@ class FilterImages extends React.Component {
         this.props.closeFilter();
     }
     handleSubmit() {
+        this.props.updateFilter({
+            type: "page",
+            value: 0
+        });
         this.props.applyFilter();
         this.props.closeFilter();
     }

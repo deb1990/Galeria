@@ -18,24 +18,34 @@ const styles = {
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
+        justifyContent: 'space-around'
     }
 };
 
 class Gallery extends React.Component {
     constructor() {
         super();
-        this.state = {
-            isFilterOpen: false
-        }
+
+        window.addEventListener('scroll', (e) => {
+            if(!this.props.galleryData.fetching) {
+                if (( window.innerHeight + window.scrollY) >= document.getElementById("image-grid").scrollHeight - 100) {
+                    console.log("GetData");
+                    this.props.dispatch(galleryActions.getMoreData());
+                    this.getData();
+                }
+            }
+        });
     }
 
     getAPIUrl() {
-        const apiPrefix = "https://api.imgur.com/3/gallery/";
-        return apiPrefix +
-            this.props.galleryData.filter.section + "/" +
+        return "/imgur";
+    }
+
+    prepareUrlOptions() {
+        return this.props.galleryData.filter.section + "/" +
             this.props.galleryData.filter.sort + "/" +
             this.props.galleryData.filter.window + "/" +
+            this.props.galleryData.filter.page + "/" +
             "?showViral=" + this.props.galleryData.filter.viral;
     }
     
@@ -43,8 +53,7 @@ class Gallery extends React.Component {
         this.props.dispatch(galleryActions.fetchStart());
         axios({
             method: "get",
-            url: this.getAPIUrl(),
-            headers: {'Authorization': 'Client-ID 093fd3f83b3fea9'}
+            url: this.getAPIUrl() + "?url=" + this.prepareUrlOptions()
         }).then((response)=>{
                 this.props.dispatch(galleryActions.dataFetched(response.data));
             });
@@ -56,7 +65,7 @@ class Gallery extends React.Component {
 
     showLoader() {
         if(this.props.galleryData.fetching) {
-            return <div>
+            return <div className="loader">
                 <CircularProgress/>
             </div>;
         }
@@ -70,6 +79,11 @@ class Gallery extends React.Component {
         this.props.dispatch(galleryActions.updateFilter(value));
     }
 
+    applyFilter() {
+        this.props.dispatch(galleryActions.applyFilter());
+        this.getData();
+    }
+
     showImageDetails(index) {
         this.props.dispatch(galleryActions.showImageDetails(index));
     }
@@ -79,7 +93,7 @@ class Gallery extends React.Component {
     }
 
     render() {
-        return <div style={styles.root}>
+        return <div id = "app-area" style={styles.root}>
             {this.showLoader()}
             <AppBar
                 title="Galeria"
@@ -93,7 +107,7 @@ class Gallery extends React.Component {
                 data = {this.props.galleryData.filter}
                 closeFilter={this.toggleFilterDialog.bind(this)}
                 updateFilter={this.updateFilterState.bind(this)}
-                applyFilter={this.getData.bind(this)}
+                applyFilter={this.applyFilter.bind(this)}
             />
             
 

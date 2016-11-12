@@ -11,6 +11,7 @@ export default function(state = {
         open: false,
         section: 'hot',
         sort: 'viral',
+        page: 0,
         window: 'day',
         viral: true
     }
@@ -35,7 +36,7 @@ export default function(state = {
                 ...state,
                 fetching: false,
                 fetched: true,
-                list: action.payload.data
+                list: state.list.concat(action.payload.data)
             };
         }
         case "TOGGLE_FILTER": {
@@ -49,7 +50,15 @@ export default function(state = {
             let returnVal = {
                 ...state
             };
+            returnVal.list = [];
             returnVal.filter[action.payload.type] = action.payload.value;
+            return returnVal;
+        }
+        case "GET_MORE_DATA": {
+            let returnVal = {
+                ...state
+            };
+            returnVal.filter["page"] = returnVal.filter["page"] + 1;
             return returnVal;
         }
         case "SHOW_IMG_DETAILS": {

@@ -31,6 +31,12 @@ export function updateFilter(value) {
     }
 }
 
+export function applyFilter() {
+    return {
+        type: "APPLY_FILTER"
+    }
+}
+
 export function showImageDetails(value) {
     return {
         type: "SHOW_IMG_DETAILS",
@@ -44,5 +50,21 @@ export function hideImageDetails() {
     }
 }
 
-export default {fetchStart, fetchError, dataFetched, toggleFilterDialog, updateFilter, showImageDetails, hideImageDetails};
+export function getMoreData() {
+    return {
+        type: "GET_MORE_DATA"
+    }
+}
+
+export default {
+    fetchStart, 
+    fetchError, 
+    dataFetched, 
+    toggleFilterDialog, 
+    updateFilter, 
+    showImageDetails, 
+    hideImageDetails, 
+    getMoreData,
+    applyFilter
+};
 

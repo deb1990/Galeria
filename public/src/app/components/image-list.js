@@ -1,5 +1,6 @@
 import React from "react";
 import {GridList, GridTile} from 'material-ui/GridList';
+import InfiniteScroll from 'react-infinite-scroll';
 
 class ImageList extends React.Component {
     constructor(){
@@ -28,6 +29,7 @@ class ImageList extends React.Component {
     render() {
         var list = this.getList();
         return <GridList
+            id="image-grid"
             cols={3}
             cellHeight={500}
             padding={1}
