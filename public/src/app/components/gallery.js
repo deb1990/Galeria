@@ -25,11 +25,13 @@ const styles = {
 class Gallery extends React.Component {
     constructor() {
         super();
+        this.setScrollLoad();
+    }
 
-        window.addEventListener('scroll', (e) => {
+    setScrollLoad() {
+        window.addEventListener('scroll', () => {
             if(!this.props.galleryData.fetching) {
                 if (( window.innerHeight + window.scrollY) >= document.getElementById("image-grid").scrollHeight - 100) {
-                    console.log("GetData");
                     this.props.dispatch(galleryActions.getMoreData());
                     this.getData();
                 }

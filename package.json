@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "http-server -p 1233",
+    "start": "node server.js",
     "watch": "gulp watch",
     "build": "gulp",
     "postinstall": "npm run build"
@@ -16,7 +16,6 @@
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-infinite-scroller": "^1.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.5",

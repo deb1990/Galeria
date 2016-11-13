@@ -1,6 +1,5 @@
 import React from "react";
 import {GridList, GridTile} from 'material-ui/GridList';
-import InfiniteScroll from 'react-infinite-scroll';
 
 class ImageList extends React.Component {
     constructor(){
@@ -13,6 +12,8 @@ class ImageList extends React.Component {
                 return <GridTile
                     key={item.id}
                     title={item.title}
+                    rows={0.8}
+                    titleBackground="rgba(0, 0, 0, 0.9)"
                     subtitle={<span>{item.topic}</span>}>
                     <img src={item.link}
                          onClick={()=>{this.props.showImageDetails(index)}}/>

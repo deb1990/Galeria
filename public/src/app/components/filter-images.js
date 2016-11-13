@@ -7,6 +7,14 @@ import MenuItem from 'material-ui/MenuItem'
 import Checkbox from 'material-ui/Checkbox'
 import FlatButton from 'material-ui/FlatButton'
 
+const styles = {
+    dialogStyles: {
+        width: "300px"
+    },
+    checkBoxStyle: {
+        marginTop: "20px"
+    }
+};
 
 class FilterImages extends React.Component {
     constructor() {
@@ -66,6 +74,7 @@ class FilterImages extends React.Component {
             />
         ];
         return <Dialog
+            contentStyle={styles.dialogStyles}
             actions={actions}
             modal={false}
             open={this.props.data.open}>
@@ -97,7 +106,8 @@ class FilterImages extends React.Component {
             </SelectField>
 
             <Checkbox
-                label="Viral"
+                label="Show Viral"
+                style={styles.checkBoxStyle}
                 checked={this.props.data.viral}
                 onCheck={this.handleViral.bind(this)}
             />
