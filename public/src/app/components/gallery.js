@@ -111,8 +111,6 @@ class Gallery extends React.Component {
                 updateFilter={this.updateFilterState.bind(this)}
                 applyFilter={this.applyFilter.bind(this)}
             />
-            
-
             <ImageList
                 data = {this.props.galleryData.list}
                 showImageDetails = {this.showImageDetails.bind(this)}

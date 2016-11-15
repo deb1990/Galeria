@@ -10,6 +10,7 @@ class ImageList extends React.Component {
         var images = this.props.data.map((item, index)=>{
             if(!item.is_album) {
                 return <GridTile
+                    className="grid-items"
                     key={item.id}
                     title={item.title}
                     rows={0.8}

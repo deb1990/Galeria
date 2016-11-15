@@ -38,3 +38,8 @@ html, body, #app {
   .image-info span {
     display: inline-flex;
     vertical-align: middle; }
+
+#image-grid {
+  margin: 0 !important; }
+  #image-grid .grid-items {
+    cursor: pointer; }

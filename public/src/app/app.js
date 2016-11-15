@@ -9,20 +9,17 @@ import Gallery from "./components/gallery";
 import {store} from "./reducer/index";
 import {Provider} from "react-redux";
 import { syncHistoryWithStore } from 'react-router-redux'
+
 // Constants
 const app = document.getElementById("app");
 const history = syncHistoryWithStore(hashHistory, store);
 
-
+//Material UI Theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {cyan500,blueGrey800} from 'material-ui/styles/colors';
-const muiTheme = getMuiTheme({
-    
-});
+const muiTheme = getMuiTheme({});
 
 
 // Render

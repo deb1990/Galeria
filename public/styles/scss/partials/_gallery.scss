@@ -34,3 +34,11 @@
     vertical-align: middle;
   }
 }
+
+#image-grid {
+  margin: 0!important;
+
+  .grid-items {
+    cursor: pointer;
+  }
+}

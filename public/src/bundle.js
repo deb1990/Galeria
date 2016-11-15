@@ -78,8 +78,6 @@
 
 	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-	var _colors = __webpack_require__(513);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Constants
@@ -91,6 +89,8 @@
 	// Store and Redux
 
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, _index.store);
+
+	//Material UI Theme
 
 	(0, _reactTapEventPlugin2.default)();
 
@@ -35398,6 +35398,7 @@
 	                    return _react2.default.createElement(
 	                        _GridList.GridTile,
 	                        {
+	                            className: "grid-items",
 	                            key: item.id,
 	                            title: item.title,
 	                            rows: 0.8,
