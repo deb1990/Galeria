@@ -11,6 +11,7 @@ Technologies Used
  - Material UI
  - Gulp
  - Docker
+ - Webpack
  
 ### Steps to run
 ```sh
